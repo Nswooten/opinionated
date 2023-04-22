@@ -1,0 +1,44 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+
+<main>
+<h1>Add <%= title %></h1>
+<% if(title === "Media") {%>
+    <form action="/mediaTypes" method="POST">
+      <label for="mediaTypes">Select a media type:</label>
+      <select id="mediaTypes" name="type" required>
+        <option value="Book">Book</option>
+        <option value="Game">Game</option>
+        <option value="Movie">Movie</option>
+      </select>
+      <label>
+        Title:
+        <input type="String"  name="title" required>
+      </label>
+      <label>
+        Author:
+        <input type="String"  name="creator" required>
+      </label>
+      <label>
+        Genre:
+        <input type="String"  name="genre" required>
+      </label>
+      <label>
+        Year Published:
+        <input type="String"  name="releaseYear" pattern="\d{4}" required>
+      </label>
+      <button type="submit">Add Media</button>
+    </form>
+<% }else if(title === "Book") { %>
+  
+<% }else if(title === "Game") { %>
+  
+  
+<% } %>
+  </main>
+
+
+
+
+<%- include('../partials/footer') %>
