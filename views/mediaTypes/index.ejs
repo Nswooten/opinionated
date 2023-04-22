@@ -1,0 +1,28 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1>All <%= title %>s</h1>
+  <table id="list">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Genre</th>
+        <th>Release Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% mediaTypes.forEach((mediaType) => { %>
+      <tr>
+        <td><%= mediaType.title %></td>
+        <td><%= mediaType.creator %></td>
+        <td><%= mediaType.genre %></td>
+        <td><%= mediaType.releaseYear %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>
