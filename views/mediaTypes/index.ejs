@@ -3,15 +3,37 @@
 
 <main>
   <h1>All <%= title %>s</h1>
+  <% if(title === "Book") {%>
   <table id="list">
     <thead>
       <tr>
         <th>Title</th>
-        <th>Creator</th>
+        <th>Author</th>
         <th>Genre</th>
         <th>Release Year</th>
       </tr>
     </thead>
+  <% }else if(title === "Movie") { %>
+    <table id="list">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Director</th>
+          <th>Genre</th>
+          <th>Release Year</th>
+        </tr>
+      </thead>
+  <% }else if(title === "Game") { %>
+    <table id="list">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Creator</th>
+          <th>Genre</th>
+          <th>Release Year</th>
+        </tr>
+      </thead>
+      <% } %>
     <tbody>
       <% mediaTypes.forEach((mediaType) => { %>
       <tr>
@@ -23,6 +45,7 @@
       <% }) %>
     </tbody>
   </table>
+  
 </main>
 
 <%- include('../partials/footer') %>
