@@ -19,7 +19,7 @@ function index(req, res) {
 function create(req, res){
   MediaType.create(req.body)
   .then(mediaType => {
-    res.redirect("/mediaTypes/new")
+    res.redirect(`/mediaTypes?type=${req.body.type}`)
   })
   .catch(err => {
     console.log(err)
