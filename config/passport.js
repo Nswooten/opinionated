@@ -19,6 +19,7 @@ passport.use(
           const newProfile = new Profile({
             name: profile.displayName,
             avatar: profile.photos[0].value,
+            opinions: [],
           })
           const newUser = new User({
             email: profile.emails[0].value,
@@ -58,7 +59,15 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (userId, done) {
   User.findById(userId)
-  .populate('profile', 'name avatar')
+  // .populate([{'profile', 'name avatar'} opinions')
+  .populate([
+    {
+      path: "profile", 
+      select:{"name":1, "avatar":1, "opinions":1},
+      populate: {path: "opinions", model:"Opinion"}
+    },
+    // {path: "profile.opinions"}
+  ])
   .then(user => {
     done(null, user)
   })

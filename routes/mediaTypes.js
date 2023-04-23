@@ -5,7 +5,9 @@ const router = Router()
 
 router.get('/', mediaTypesCtrl.index)
 router.get('/new', mediaTypesCtrl.new)
-router.get('/:mediaTypeId', mediaTypesCtrl.show) 
+router.get('/:mediaTypeId', mediaTypesCtrl.show)
+
+router.post('/:mediaTypeId/opinions', mediaTypesCtrl.addOpinion)
 
 
 

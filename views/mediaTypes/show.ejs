@@ -39,7 +39,28 @@
       </tr>
     </tbody>
   </table>
-  
+  <% if(mediaType.opinions.length) { %>
+  <h2>Opinions</h2>
+    <ul>
+      <% mediaType.opinions.forEach(opinion => { %>
+      <li><%= opinion.owner.name %>'s Opinion</li>
+      <% }) %>
+    </ul>
+  <% }else{ %>
+  <h2>No Opinions on <%= mediaType.title %></h2> 
+  <% } %>
+  <form id="add-opinion-to-mediaType" action="/mediaTypes/<%= mediaType._id %>/opinions" method="POST">
+    <label>
+      Rating from 0 to 100:
+      <input type="Number"  name="rating" min="0" max="100" required>
+    </label>
+    <label>
+      Your Opinion:
+      <textarea type="String"  name="text" rows="4" cols="50" required></textarea>
+    </label>
+    <button type="submit">Add Your Opinion on <%= mediaType.title %></button>
+  </form>
+  </section>
 </main>
 
 

@@ -1,5 +1,6 @@
 import { MediaType } from "../models/mediaType.js"
 import { Opinion } from "../models/opinion.js"
+import { Profile } from "../models/profile.js"
 
 function index(req, res) {
   MediaType.find(req.query)
@@ -11,7 +12,7 @@ function index(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/movies/new')
+    res.redirect('/mediaTypes/new')
   })
 }
 
@@ -28,7 +29,7 @@ function create(req, res){
 
 function newMediaType(req, res){
   res.render('mediaTypes/new.ejs', {
-    title: "Media",
+    title: req.query.type
   })
   .catch(err => {
     console.log(err)
@@ -42,7 +43,7 @@ function show(req, res){
   .then(mediaType => {
     res.render('mediaTypes/show', {
       mediaType,
-      title: mediaType.title
+      title: mediaType.title,
     })
   })
   .catch(err => {
@@ -51,6 +52,36 @@ function show(req, res){
   })
 }
 
+function addOpinion(req, res){
+  req.body.owner = req.user.profile._id
+  Opinion.create(req.body)
+  .then((opinion) => {
+    MediaType.findById(req.params.mediaTypeId)
+    .then(mediaType => {
+      mediaType.opinions.push(opinion)
+      Profile.findById(req.user.profile._id)
+      .then(profile => {
+        profile.opinions.push(opinion)
+        profile.save()
+        mediaType.save()
+        .then(() => {
+          res.redirect(`/mediaTypes/${mediaType._id}`)
+          console.log(opinion)
+          console.log(req.user.profile.opinions)
+        })
+        .catch(err => {
+          console.log(err)
+          res.redirect('/mediaTypes')
+        })
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/mediaTypes')
+  })
+}
+  
 
 
 
@@ -59,4 +90,5 @@ export{
   create,
   newMediaType as new,
   show,
+  addOpinion,
 }

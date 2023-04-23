@@ -13,6 +13,17 @@
       />
     </div>
   <% } %>
+  <% if(user.profile.opinions.length) { %>
+    <h2>Opinions</h2>
+      <ul>
+        <% user.profile.opinions.forEach(opinion => { %>
+        <li><%= opinion.rating %></li>
+          <% console.log(opinion) %>
+        <% }) %>
+      </ul>
+    <% }else{ %>
+    <h2>No Opinions</h2> 
+    <% } %>
 </main>
 
 <%- include('./partials/footer') %>
