@@ -39,7 +39,12 @@ function newMediaType(req, res){
 
 function show(req, res){
   MediaType.findById(req.params.mediaTypeId)
-  .populate('opinions')
+  .populate([
+    {
+      path: "opinions", 
+      populate: {path: "owner", model:"Profile"}
+    },
+  ])
   .then(mediaType => {
     res.render('mediaTypes/show', {
       mediaType,
