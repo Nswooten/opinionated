@@ -19,7 +19,7 @@ import './config/database.js'
 import'./config/passport.js'
 
 // import routes
-import { router as indexRouter } from './routes/index.js'
+import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as mediaTypesRouter } from './routes/mediaTypes.js'
 
@@ -61,7 +61,7 @@ app.use(passport.session())
 app.use(passDataToView)
 
 // mount imported routes
-app.use('/', indexRouter)
+app.use('/', profilesRouter)
 app.use('/auth', authRouter)
 app.use('/mediaTypes', mediaTypesRouter)
 

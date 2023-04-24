@@ -2,7 +2,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1><%= user ? `${user.profile.name}'s Opinions` : "Opinionated" %>
+  <h1><%= user ? `${user.profile.name}'s Profile` : "Opinionated" %>
   
   </h1>
   <% if (user?.profile.avatar) { %>
@@ -12,17 +12,30 @@
         alt="<%= user.profile.name %> avatar"
       />
     </div>
-  <% } %>
-  <% if(user.profile.opinions.length) { %>
-    <h2>Opinions</h2>
+    <% } %>
+    <% if(user?.profile.opinions.length) { %>
+      <h2>Opinions</h2>
       <ul>
         <% user.profile.opinions.forEach(opinion => { %>
-        <li>Your Opinion on <%= opinion.mediaTypeRef.title %></li>
-         
-        <% }) %>
+          <% console.log(opinion.id) %>
+          <li>Your Opinion on <%= opinion.mediaTypeRef.title %></li>
+          <div>
+            <form id="update-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=PUT" method="POST">
+              
+              <label>
+                <input type="Number"  name="rating" min="0" max="100" value="<%= opinion.rating %>" required>
+              </label>
+              <label>
+                Your Opinion:
+                <textarea type="String"  name="text" rows="4" cols="50" required><%= opinion.text %></textarea>
+              </label>
+              <button type="submit">Edit Your Opinion on <%= opinion.mediaTypeRef.title %></button>
+            </form>
+          </div>
+          <% }) %>
       </ul>
     <% }else{ %>
-    <h2>No Opinions</h2> 
+    <h2> <% user? "No Opinions" : "" %></h2> 
     <% } %>
 </main>
 

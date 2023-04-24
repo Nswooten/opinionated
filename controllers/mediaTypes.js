@@ -85,8 +85,6 @@ function addOpinion(req, res){
     res.redirect('/mediaTypes')
   })
 }
-  
-
 
 
 export{
