@@ -14,7 +14,6 @@ const opinionSchema = new Schema({
     required: true,
   },
   owner: { type: Schema.Types.ObjectId, ref: 'Profile' },
-  mediaTypeRef: {type: Schema.Types.ObjectId, ref: 'MediaType' },
 }, {
   timestamps: true
 })
