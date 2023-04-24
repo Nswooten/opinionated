@@ -64,9 +64,9 @@ passport.deserializeUser(function (userId, done) {
     {
       path: "profile", 
       select:{"name":1, "avatar":1, "opinions":1},
-      populate: {path: "opinions", model:"Opinion"}
+      populate: {path: "opinions", model:"Opinion", 
+      populate: {path: "mediaTypeRef", model: "MediaType"}}
     },
-    // {path: "profile.opinions"}
   ])
   .then(user => {
     done(null, user)

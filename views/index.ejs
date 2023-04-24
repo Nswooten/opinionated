@@ -17,8 +17,8 @@
     <h2>Opinions</h2>
       <ul>
         <% user.profile.opinions.forEach(opinion => { %>
-        <li><%= opinion %></li>
-          <% console.log(opinion) %>
+        <li>Your Opinion on <%= opinion.mediaTypeRef.title %></li>
+         
         <% }) %>
       </ul>
     <% }else{ %>
