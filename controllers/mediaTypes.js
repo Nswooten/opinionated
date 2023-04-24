@@ -59,6 +59,7 @@ function show(req, res){
 
 function addOpinion(req, res){
   req.body.owner = req.user.profile._id
+  req.body.mediaTypeRef = req.params.mediaTypeId
   Opinion.create(req.body)
   .then((opinion) => {
     MediaType.findById(req.params.mediaTypeId)
@@ -71,8 +72,6 @@ function addOpinion(req, res){
         mediaType.save()
         .then(() => {
           res.redirect(`/mediaTypes/${mediaType._id}`)
-          console.log(opinion)
-          console.log(req.user.profile.opinions)
         })
         .catch(err => {
           console.log(err)
