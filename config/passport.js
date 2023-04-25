@@ -68,6 +68,8 @@ passport.deserializeUser(function (userId, done) {
     },
   ])
   .then(user => {
+    console.log(user.profile.opinions)
+    
     done(null, user)
   })
   .catch(err => {

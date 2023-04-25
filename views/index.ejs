@@ -17,8 +17,10 @@
       <h2>Opinions</h2>
       <ul>
         <% user.profile.opinions.forEach(opinion => { %>
-          <% console.log(opinion.id) %>
           <li>Your Opinion on <%= opinion.mediaTypeRef.title %></li>
+          <form id="delete-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
+          </form>
           <div>
             <form id="update-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=PUT" method="POST">
               

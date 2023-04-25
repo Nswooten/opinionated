@@ -43,7 +43,10 @@
   <h2>Opinions</h2>
     <ul>
       <% mediaType.opinions.forEach(opinion => { %>
-      <li><%= opinion.owner.name %>'s <a></a>Opinion</li>
+      <li><%= opinion.owner.name %>'s Opinion</li>
+      <input type="number" value="<%= opinion.rating %>" readonly>
+      <textarea rows="4" cols="50" readonly><%= opinion.text %></textarea>
+      
       <% }) %>
     </ul>
   <% }else{ %>

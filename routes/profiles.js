@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
 })
 
 router.put('/:mediaTypeId/opinions/:opinionId', profilesCtrl.updateOpinion)
-
+router.delete('/:mediaTypeId/opinions/:opinionId', profilesCtrl.deleteOpinion)
 export {
   router
 }
