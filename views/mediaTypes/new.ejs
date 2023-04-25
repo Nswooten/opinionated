@@ -1,18 +1,38 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-
-
 <main>
   <h1>Add <%= title %></h1>
-  <% if(title === "Book") {%>
+  <div class="add-media">
+    <% if(title === "Book") {%>
+      <form action="/mediaTypes" method="POST">
+        <input type="hidden" name="type" value="Book">
+        <label>
+          Title:
+          <input type="String"  name="title" required>
+        </label>
+        <label>
+          Author:
+          <input type="String"  name="creator" required>
+        </label>
+        <label>
+          Genre:
+          <input type="String"  name="genre" required>
+        </label>
+        <label>
+          Year Published:
+          <input type="String"  name="releaseYear" pattern="\d{4}" required>
+        </label>
+        <button type="submit">Add <%= title %></button>
+      </form>
+  <% }else if(title === "Movie") { %>
     <form action="/mediaTypes" method="POST">
-      <input type="hidden" name="type" value="Book">
+      <input type="hidden" name="type" value="Movie">
       <label>
         Title:
         <input type="String"  name="title" required>
       </label>
       <label>
-        Author:
+        Director:
         <input type="String"  name="creator" required>
       </label>
       <label>
@@ -20,57 +40,33 @@
         <input type="String"  name="genre" required>
       </label>
       <label>
-        Year Published:
+        Year Released:
         <input type="String"  name="releaseYear" pattern="\d{4}" required>
       </label>
       <button type="submit">Add <%= title %></button>
     </form>
-<% }else if(title === "Movie") { %>
-  <form action="/mediaTypes" method="POST">
-    <input type="hidden" name="type" value="Movie">
-    <label>
-      Title:
-      <input type="String"  name="title" required>
-    </label>
-    <label>
-      Director:
-      <input type="String"  name="creator" required>
-    </label>
-    <label>
-      Genre:
-      <input type="String"  name="genre" required>
-    </label>
-    <label>
-      Year Released:
-      <input type="String"  name="releaseYear" pattern="\d{4}" required>
-    </label>
-    <button type="submit">Add <%= title %></button>
-  </form>
-<% }else if(title === "Game") { %>
-  <form action="/mediaTypes" method="POST">
-    <input type="hidden" name="type" value="Game">
-    <label>
-      Title:
-      <input type="String"  name="title" required>
-    </label>
-    <label>
-      Creator:
-      <input type="String"  name="creator" required>
-    </label>
-    <label>
-      Genre:
-      <input type="String"  name="genre" required>
-    </label>
-    <label>
-      Year Released:
-      <input type="String"  name="releaseYear" pattern="\d{4}" required>
-    </label>
-    <button type="submit">Add <%= title %></button>
-  </form>
-<% } %>
-  </main>
-
-
-
-
+  <% }else if(title === "Game") { %>
+    <form action="/mediaTypes" method="POST">
+      <input type="hidden" name="type" value="Game">
+      <label>
+        Title:
+        <input type="String"  name="title" required>
+      </label>
+      <label>
+        Creator:
+        <input type="String"  name="creator" required>
+      </label>
+      <label>
+        Genre:
+        <input type="String"  name="genre" required>
+      </label>
+      <label>
+        Year Released:
+        <input type="String"  name="releaseYear" pattern="\d{4}" required>
+      </label>
+      <button type="submit">Add <%= title %></button>
+    </form>
+  <% } %>
+  </div>
+</main>
 <%- include('../partials/footer') %>

@@ -1,54 +1,90 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-
 <main>
   <h1>All <%= title %>s</h1>
-  <% if(title === "Book") {%>
-  <table id="list">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Genre</th>
-        <th>Release Year</th>
-      </tr>
-    </thead>
-  <% }else if(title === "Movie") { %>
-    <table id="list">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Director</th>
-          <th>Genre</th>
-          <th>Release Year</th>
-        </tr>
-      </thead>
-  <% }else if(title === "Game") { %>
-    <table id="list">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Company</th>
-          <th>Genre</th>
-          <th>Release Year</th>
-        </tr>
-      </thead>
-      <% } %>
-    <tbody>
+  <div class="media-index">
+    <% if(title === "Book") {%>
       <% mediaTypes.forEach((mediaType) => { %>
-      <tr>
-        <td><%= mediaType.title %></td>
-        <td><%= mediaType.creator %></td>
-        <td><%= mediaType.genre %></td>
-        <td><%= mediaType.releaseYear %></td>
-        <td><a href="/mediaTypes/<%= mediaType._id %>">DETAILS</a></td>
-      </tr>
+        <div class="mediatype">
+          <table id="list">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= mediaType.title %></td>
+                <td><%= mediaType.creator %></td>
+                <td><%= mediaType.genre %></td>
+                <td><%= mediaType.releaseYear %></td>
+                <td><a href="/mediaTypes/<%= mediaType._id %>">DETAILS</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       <% }) %>
-    </tbody>
-  </table>
-  <a href="/mediaTypes/new?type=<%= title %>">
-    <button class="btn">Add a new <%= title %> </button>
-  </a>
+    <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
+      <button class="btn">Add a new <%= title %> </button>
+    </a>
+    <% }else if(title === "Movie") { %>
+      <% mediaTypes.forEach((mediaType) => { %>
+        <div class="mediatype">
+          <table id="list">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= mediaType.title %></td>
+                <td><%= mediaType.creator %></td>
+                <td><%= mediaType.genre %></td>
+                <td><%= mediaType.releaseYear %></td>
+                <td><a href="/mediaTypes/<%= mediaType._id %>">DETAILS</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% }) %>
+    <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
+      <button class="btn">Add a new <%= title %> </button>
+    </a>
+    <% }else if(title === "Game") { %>
+      <% mediaTypes.forEach((mediaType) => { %>
+        <div class="mediatype">
+          <table id="list">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= mediaType.title %></td>
+                <td><%= mediaType.creator %></td>
+                <td><%= mediaType.genre %></td>
+                <td><%= mediaType.releaseYear %></td>
+                <td><a href="/mediaTypes/<%= mediaType._id %>">DETAILS</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <% }) %>
+    <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
+      <button class="btn">Add a new <%= title %> </button>
+    </a>
+    <% } %>
+  </div>
 </main>
-
 <%- include('../partials/footer') %>

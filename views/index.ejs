@@ -2,43 +2,48 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1><%= user ? `${user.profile.name}'s Profile` : "Opinionated" %>
-  
-  </h1>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
-      />
-    </div>
-    <% } %>
+  <div class="profile"> 
+    <h1><%= user ? `${user.profile.name}'s Profile` : "Opinionated" %>
+    
+    </h1>
+    <% if (user?.profile.avatar) { %>
+      
+        <img
+          src="<%= user.profile.avatar %>"
+          alt="<%= user.profile.name %> avatar"
+        />
+      <% } %>
+  </div>
+  <div class="profile-opinions">
     <% if(user?.profile.opinions.length) { %>
       <h2>Opinions</h2>
-      <ul>
-        <% user.profile.opinions.forEach(opinion => { %>
-          <li>Your Opinion on <%= opinion.mediaTypeRef.title %></li>
-          <form id="delete-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=DELETE" method="POST">
-          <button type="submit">X</button>
-          </form>
-          <div>
-            <form id="update-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=PUT" method="POST">
-              
-              <label>
-                <input type="Number"  name="rating" min="0" max="100" value="<%= opinion.rating %>" required>
-              </label>
-              <label>
-                Your Opinion:
-                <textarea type="String"  name="text" rows="4" cols="50" required><%= opinion.text %></textarea>
-              </label>
-              <button type="submit">Edit Your Opinion on <%= opinion.mediaTypeRef.title %></button>
+      <div class="profile-opinions-list">
+        <ul>
+          <% user.profile.opinions.forEach(opinion => { %>
+            <li>Your Opinion on <%= opinion.mediaTypeRef.title %></li>
+            <form id="delete-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
             </form>
-          </div>
-          <% }) %>
-      </ul>
+            <div>
+              <form id="update-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=PUT" method="POST">
+                
+                <label>
+                  <input type="Number"  name="rating" min="0" max="100" value="<%= opinion.rating %>" required>
+                </label>
+                <label>
+                  Your Opinion:
+                  <textarea type="String"  name="text" rows="4" cols="50" required><%= opinion.text %></textarea>
+                </label>
+                <button type="submit">Edit Your Opinion on <%= opinion.mediaTypeRef.title %></button>
+              </form>
+            </div>
+            <% }) %>
+        </ul>
+      </div>
     <% }else{ %>
     <h2> <% user? "No Opinions" : "" %></h2> 
     <% } %>
+  </div>
 </main>
 
 <%- include('./partials/footer') %>

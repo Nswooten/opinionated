@@ -1,74 +1,78 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-
 <main>
-  <h1><%= mediaType.title %></h1>
-  <% if(mediaType.type === "Book") {%>
-  <table id="list">
-    <thead>
-      <tr>
-        <th>Author</th>
-        <th>Genre</th>
-        <th>Release Year</th>
-      </tr>
-    </thead>
-  <% }else if(mediaType.type === "Movie") { %>
-    <table id="list">
-      <thead>
-        <tr>
-          <th>Director</th>
-          <th>Genre</th>
-          <th>Release Year</th>
-        </tr>
-      </thead>
-  <% }else if(mediaType.type === "Game") { %>
-    <table id="list">
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Genre</th>
-          <th>Release Year</th>
-        </tr>
-      </thead>
-      <% } %>
-    <tbody>
-      <tr>
-        <td><%= mediaType.creator %></td>
-        <td><%= mediaType.genre %></td>
-        <td><%= mediaType.releaseYear %></td>
-      </tr>
-    </tbody>
-  </table>
-  <% if(mediaType.opinions.length) { %>
-  <h2>Opinions</h2>
+  <div class="media-type">
+    <h1><%= mediaType.title %></h1>
+    <% if(mediaType.type === "Book") {%>
+      <table id="list">
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+          </tr>
+        </thead>
+    <% }else if(mediaType.type === "Movie") { %>
+      <table id="list">
+        <thead>
+          <tr>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+          </tr>
+        </thead>
+    <% }else if(mediaType.type === "Game") { %>
+      <table id="list">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+          </tr>
+        </thead>
+    <% } %>
+        <tbody>
+          <tr>
+            <td><%= mediaType.creator %></td>
+            <td><%= mediaType.genre %></td>
+            <td><%= mediaType.releaseYear %></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="media-type-opinions-list">
+    <% if(mediaType.opinions.length) { %>
+    <h2>Opinions</h2>
     <ul>
-      <% mediaType.opinions.forEach(opinion => { %>
-      <li><%= opinion.owner.name %>'s Opinion</li>
-      <input type="number" value="<%= opinion.rating %>" readonly>
-      <textarea rows="4" cols="50" readonly><%= opinion.text %></textarea>
-      
-      <% }) %>
+    <% mediaType.opinions.forEach(opinion => { %>
+      <div class="media-type-opinion">
+        <li><%= opinion.owner.name %>'s Opinion</li>
+        <details>
+          <summary>Show Opinion</summary>
+          <input type="number" value="<%= opinion.rating %>" readonly>
+          <textarea rows="4" cols="50" readonly><%= opinion.text %></textarea>
+        </details>
+      </div>
+    <% }) %>
     </ul>
-  <% }else{ %>
-  <h2>No Opinions on <%= mediaType.title %></h2> 
-  <% } %>
-  <form id="add-opinion-to-mediaType" action="/mediaTypes/<%= mediaType._id %>/opinions" method="POST">
-    <label>
-      Rating from 0 to 100:
-      <input type="Number"  name="rating" min="0" max="100" required>
-    </label>
-    <label>
-      Your Opinion:
-      <textarea type="String"  name="text" rows="4" cols="50" required></textarea>
-    </label>
-    <button type="submit">Add Your Opinion on <%= mediaType.title %></button>
-  </form>
-  </section>
-</main>
-
-
-
-
-
+  </div>
+  <div class="no-opinions-add-opinion">
+    <% }else{ %>
+    <h2>No Opinions on <%= mediaType.title %></h2> 
+    <% } %>
+    <div class="add-opinion">
+      <form id="add-opinion-to-mediaType" action="/mediaTypes/<%= mediaType._id %>/opinions" method="POST">
+        <label>
+          Rating from 0 to 100:
+          <input type="Number"  name="rating" min="0" max="100" required>
+        </label>
+        <label>
+          Your Opinion:
+          <textarea type="String"  name="text" rows="4" cols="50" required></textarea>
+        </label>
+        <button type="submit">Add Your Opinion on <%= mediaType.title %></button>
+      </form>
+    </div>
+  </div>        
+</main>               
 <%- include('../partials/footer') %>
-
