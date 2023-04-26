@@ -1,4 +1,5 @@
-html {
+html *  {
+  border: 1px solid red;
   box-sizing: border-box;
 }
 
@@ -40,4 +41,55 @@ main {
   margin-left: auto;
 }
 
+.profile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-opinions {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+}
+
+.profile-opinions-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.opinion-delete{
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+
+}
+
+.opinion-edit{
+  display: flex;
+}
+
+#update-opinion{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+  gap: 10px;
+}
+
+.each-opinion-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  border: 1px solid white;
+  margin: 10px;
+}
 

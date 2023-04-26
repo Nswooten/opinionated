@@ -43,10 +43,9 @@
   <div class="media-type-opinions-list">
     <% if(mediaType.opinions.length) { %>
     <h2>Opinions</h2>
-    <ul>
     <% mediaType.opinions.forEach(opinion => { %>
       <div class="media-type-opinion">
-        <li><%= opinion.owner.name %>'s Opinion</li>
+        <%= opinion.owner.name %>'s Opinion
         <details>
           <summary>Show Opinion</summary>
           <input type="number" value="<%= opinion.rating %>" readonly>
@@ -54,7 +53,6 @@
         </details>
       </div>
     <% }) %>
-    </ul>
   </div>
   <div class="no-opinions-add-opinion">
     <% }else{ %>

@@ -1,44 +1,73 @@
 <%- include('./partials/html-head') %>
-<%- include('./partials/nav') %>
-
-<main>
+<% if (!user) { %>
+  <script defer src="https://accounts.google.com/gsi/client"></script>
+</head>
+<body>
+<% }else{ %>
+  <%- include('./partials/nav') %>
+<% } %>
+<main class="main-profile">
   <div class="profile"> 
-    <h1><%= user ? `${user.profile.name}'s Profile` : "Opinionated" %>
-    
-    </h1>
+    <h1><%= user ? `${user.profile.name}'s Profile` : "Opinionated" %></h1>
+    <% if(!user) { %>
+      <div 
+          id="g_id_onload"
+          data-client_id="<%= googleClientID %>"
+          data-login_uri="/auth/google"
+          data-auto_prompt="false"
+          data-prompt_parent_id="g_id_onload"
+        ></div>
+        <div 
+          class="g_id_signin right"
+          data-type="standard"
+          data-size="large"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="rectangular"
+          data-logo_alignment="left"
+        ></div>
+    <% } %>
     <% if (user?.profile.avatar) { %>
-      
         <img
           src="<%= user.profile.avatar %>"
           alt="<%= user.profile.name %> avatar"
         />
+        <a href="/auth/logout" class="right">
+          <button type="submit">Logout</button>
+        </a>
       <% } %>
   </div>
   <div class="profile-opinions">
     <% if(user?.profile.opinions.length) { %>
       <h2>Opinions</h2>
       <div class="profile-opinions-list">
-        <ul>
-          <% user.profile.opinions.forEach(opinion => { %>
-            <li>Your Opinion on <%= opinion.mediaTypeRef.title %></li>
-            <form id="delete-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-            </form>
-            <div>
-              <form id="update-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=PUT" method="POST">
-                
-                <label>
-                  <input type="Number"  name="rating" min="0" max="100" value="<%= opinion.rating %>" required>
-                </label>
-                <label>
-                  Your Opinion:
-                  <textarea type="String"  name="text" rows="4" cols="50" required><%= opinion.text %></textarea>
-                </label>
-                <button type="submit">Edit Your Opinion on <%= opinion.mediaTypeRef.title %></button>
+        <% user.profile.opinions.forEach(opinion => { %>
+          <div class="each-opinion-card">
+            <div class="opinion-delete">
+              <div><%= opinion.rating %></div>
+              <header><%= opinion.mediaTypeRef.title %></header>
+              <form id="delete-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
               </form>
             </div>
-            <% }) %>
-        </ul>
+            <div class="opinion-edit">
+              <details>
+                <summary>...</summary>
+                <form id="update-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=PUT" method="POST">
+                  Your Rating:
+                  <label>
+                    <input type="Number"  name="rating" min="0" max="100" value="<%= opinion.rating %>" required>
+                  </label>
+                  Your Opinion:
+                  <label>
+                  <textarea type="String"  name="text" rows="4" cols="50" required><%= opinion.text %></textarea>
+                </label>
+                <button type="submit">Edit Your Opinion</button>
+              </form>
+            </details>
+          </div>
+        </div>
+        <% }) %>
       </div>
     <% }else{ %>
     <h2> <% user? "No Opinions" : "" %></h2> 
