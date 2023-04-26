@@ -3,12 +3,17 @@
   <script defer src="https://accounts.google.com/gsi/client"></script>
 </head>
 <body>
+  <main class="main-profile">
+    <div class="profile"> 
+      <h1 id="landing-page">Opinionated</h1>
 <% }else{ %>
   <%- include('./partials/nav') %>
 <% } %>
 <main class="main-profile">
-  <div class="profile"> 
-    <h1><%= user ? `${user.profile.name}` : "Opinionated" %></h1>
+  <div class="profile">
+    <% if(user) {%> 
+    <h1><%= user.profile.name %></h1>
+    <% } %>
     <% if(!user) { %>
       <div 
           id="g_id_onload"
@@ -20,8 +25,8 @@
         <div 
           class="g_id_signin right"
           data-type="standard"
-          data-size="large"
-          data-theme="outline"
+          data-size="small"
+          data-theme="filled_black"
           data-text="sign_in_with"
           data-shape="rectangular"
           data-logo_alignment="left"

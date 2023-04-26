@@ -1,4 +1,13 @@
-<%- include('../partials/html-head') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../stylesheets/reset.css" />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
+    <link rel="stylesheet" href="../stylesheets/mediaTypes/index.css" />
+    <script src="https://kit.fontawesome.com/96f9470ce4.js" crossorigin="anonymous"></script>
+    <title><%= title %></title>
 <%- include('../partials/nav') %>
 <main>
   <h1>All <%= title %>s</h1>
@@ -6,25 +15,9 @@
     <% if(title === "Book") {%>
       <% mediaTypes.forEach((mediaType) => { %>
         <div class="mediatype">
-          <table id="list">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Genre</th>
-                <th>Release Year</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><%= mediaType.title %></td>
-                <td><%= mediaType.creator %></td>
-                <td><%= mediaType.genre %></td>
-                <td><%= mediaType.releaseYear %></td>
-                <td><a href="/mediaTypes/<%= mediaType._id %>">DETAILS</a></td>
-              </tr>
-            </tbody>
-          </table>
+          <div><i class="fa-solid fa-book fa-spin fa-2xl" style="color: #d6d6d7;"></i></div>
+          <div id="title"><%= mediaType.title %></div>
+          <a href="/mediaTypes/<%= mediaType._id %>"><i class="fa-solid fa-circle-info fa-2xl" style="color: #d6d6d7;"></i></a>
         </div>
       <% }) %>
     <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
@@ -33,25 +26,9 @@
     <% }else if(title === "Movie") { %>
       <% mediaTypes.forEach((mediaType) => { %>
         <div class="mediatype">
-          <table id="list">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Director</th>
-                <th>Genre</th>
-                <th>Release Year</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><%= mediaType.title %></td>
-                <td><%= mediaType.creator %></td>
-                <td><%= mediaType.genre %></td>
-                <td><%= mediaType.releaseYear %></td>
-                <td><a href="/mediaTypes/<%= mediaType._id %>">DETAILS</a></td>
-              </tr>
-            </tbody>
-          </table>
+          <div><i class="fa-solid fa-film fa-spin fa-2xl" style="color: #d6d6d7;"></i></div>
+          <div id="title"><%= mediaType.title %></div>
+          <a href="/mediaTypes/<%= mediaType._id %>"><i class="fa-solid fa-circle-info fa-2xl" style="color: #d6d6d7;"></i></a>
         </div>
       <% }) %>
     <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
@@ -60,25 +37,9 @@
     <% }else if(title === "Game") { %>
       <% mediaTypes.forEach((mediaType) => { %>
         <div class="mediatype">
-          <table id="list">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Company</th>
-                <th>Genre</th>
-                <th>Release Year</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><%= mediaType.title %></td>
-                <td><%= mediaType.creator %></td>
-                <td><%= mediaType.genre %></td>
-                <td><%= mediaType.releaseYear %></td>
-                <td><a href="/mediaTypes/<%= mediaType._id %>">DETAILS</a></td>
-              </tr>
-            </tbody>
-          </table>
+          <div><i class="fa-solid fa-gamepad fa-spin fa-2xl" style="color: #d6d6d7;"></i></div>
+          <div id="title"><%= mediaType.title %></div>
+          <a href="/mediaTypes/<%= mediaType._id %>"><i class="fa-solid fa-circle-info fa-2xl" style="color: #d6d6d7;"></i></a>
         </div>
       <% }) %>
     <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
