@@ -8,7 +8,7 @@
 <% } %>
 <main class="main-profile">
   <div class="profile"> 
-    <h1><%= user ? `${user.profile.name}'s Profile` : "Opinionated" %></h1>
+    <h1><%= user ? `${user.profile.name}` : "Opinionated" %></h1>
     <% if(!user) { %>
       <div 
           id="g_id_onload"
@@ -44,15 +44,17 @@
         <% user.profile.opinions.forEach(opinion => { %>
           <div class="each-opinion-card">
             <div class="opinion-delete">
-              <div><%= opinion.rating %></div>
+              <div class="rating"><%= opinion.rating %></div>
               <header><%= opinion.mediaTypeRef.title %></header>
               <form id="delete-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
+              <button type="submit"><i class="fa-solid fa-trash" style="color: #333639;"></i></button>
               </form>
             </div>
             <div class="opinion-edit">
               <details>
-                <summary>...</summary>
+                <summary>
+                  <i class="fa-solid fa-circle-info" style="color: #d6d6d7;"></i>
+                </summary>
                 <form id="update-opinion" action="/<%= opinion.mediaTypeRef._id %>/opinions/<%= opinion._id %>?_method=PUT" method="POST">
                   Your Rating:
                   <label>
@@ -62,7 +64,9 @@
                   <label>
                   <textarea type="String"  name="text" rows="4" cols="50" required><%= opinion.text %></textarea>
                 </label>
-                <button type="submit">Edit Your Opinion</button>
+                <button type="submit">
+                  <i class="fa-regular fa-pen-to-square" style="color: #323639;"></i>
+                </button>
               </form>
             </details>
           </div>
