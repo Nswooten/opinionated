@@ -12,6 +12,8 @@ For this project, I was tasked with building a full-stack apllication from sratc
 I consider my entire family quite opinionated. We all enjoy sharing media recommendations with each other. Logically, when deciding what application to create, Opinionated was born. I thought it would be really cool to have a place where we could all log-on, add our newest media, and leave an opinion for the rest of the family to enjoy.
 
 ## Getting Started:
+* [Planning Materials](https://trello.com/b/hVR7P97v/opinionated)
+* [Finished Product](https://opinionated.fly.dev/)
 
 ## Technologies:
 
