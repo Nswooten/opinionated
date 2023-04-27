@@ -15,7 +15,7 @@
     <% if(title === "Book") {%>
       <% mediaTypes.forEach((mediaType) => { %>
         <div class="mediatype">
-          <div><i class="fa-solid fa-book fa-spin fa-2xl" style="color: #d6d6d7;"></i></div>
+          <div><i class="fa-solid fa-book fa-2xl" style="color: #d6d6d7;"></i></div>
           <div id="title"><%= mediaType.title %></div>
           <a href="/mediaTypes/<%= mediaType._id %>"><i class="fa-solid fa-circle-info fa-2xl" style="color: #d6d6d7;"></i></a>
         </div>
@@ -26,7 +26,7 @@
     <% }else if(title === "Movie") { %>
       <% mediaTypes.forEach((mediaType) => { %>
         <div class="mediatype">
-          <div><i class="fa-solid fa-film fa-spin fa-2xl" style="color: #d6d6d7;"></i></div>
+          <div><i class="fa-solid fa-film fa-2xl" style="color: #d6d6d7;"></i></div>
           <div id="title"><%= mediaType.title %></div>
           <a href="/mediaTypes/<%= mediaType._id %>"><i class="fa-solid fa-circle-info fa-2xl" style="color: #d6d6d7;"></i></a>
         </div>
@@ -37,7 +37,7 @@
     <% }else if(title === "Game") { %>
       <% mediaTypes.forEach((mediaType) => { %>
         <div class="mediatype">
-          <div><i class="fa-solid fa-gamepad fa-spin fa-2xl" style="color: #d6d6d7;"></i></div>
+          <div><i class="fa-solid fa-gamepad fa-2xl" style="color: #d6d6d7;"></i></div>
           <div id="title"><%= mediaType.title %></div>
           <a href="/mediaTypes/<%= mediaType._id %>"><i class="fa-solid fa-circle-info fa-2xl" style="color: #d6d6d7;"></i></a>
         </div>
