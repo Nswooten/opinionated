@@ -1,10 +1,19 @@
-<%- include('../partials/html-head') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../stylesheets/reset.css" />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
+    <link rel="stylesheet" href="../stylesheets/mediaTypes/new.css" />
+    <script src="https://kit.fontawesome.com/96f9470ce4.js" crossorigin="anonymous"></script>
+    <title><%= title %></title>
 <%- include('../partials/nav') %>
 <main>
-  <h1>Add <%= title %></h1>
+  <h1>Add a <%= title %></h1>
   <div class="add-media">
     <% if(title === "Book") {%>
-      <form action="/mediaTypes" method="POST">
+      <form action="/mediaTypes" id="add-media" method="POST">
         <input type="hidden" name="type" value="Book">
         <label>
           Title:
@@ -22,10 +31,10 @@
           Year Published:
           <input type="String"  name="releaseYear" pattern="\d{4}" required>
         </label>
-        <button type="submit">Add <%= title %></button>
       </form>
+      <button type="submit" form="add-media">Add <%= title %></button>
   <% }else if(title === "Movie") { %>
-    <form action="/mediaTypes" method="POST">
+    <form action="/mediaTypes" id="add-media" method="POST">
       <input type="hidden" name="type" value="Movie">
       <label>
         Title:
@@ -43,10 +52,10 @@
         Year Released:
         <input type="String"  name="releaseYear" pattern="\d{4}" required>
       </label>
-      <button type="submit">Add <%= title %></button>
     </form>
+    <button type="submit" form="add-media">Add <%= title %></button>
   <% }else if(title === "Game") { %>
-    <form action="/mediaTypes" method="POST">
+    <form action="/mediaTypes" id="add-media" method="POST">
       <input type="hidden" name="type" value="Game">
       <label>
         Title:
@@ -64,8 +73,8 @@
         Year Released:
         <input type="String"  name="releaseYear" pattern="\d{4}" required>
       </label>
-      <button type="submit">Add <%= title %></button>
     </form>
+    <button type="submit" form="add-media">Add <%= title %></button>
   <% } %>
   </div>
 </main>
