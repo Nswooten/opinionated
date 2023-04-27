@@ -49,37 +49,50 @@
         </tbody>
       </table>
   </div>
-  <div class="media-type-opinions-list">
+  <div class="media-type-opinions-container">
     <% if(mediaType.opinions.length) { %>
-    <h2>Opinions</h2>
-    <% mediaType.opinions.forEach(opinion => { %>
-      <div class="media-type-opinion">
-        <%= opinion.owner.name %>'s Opinion
-        <details>
-          <summary>Show Opinion</summary>
-          <input type="number" value="<%= opinion.rating %>" readonly>
-          <textarea rows="4" cols="50" readonly><%= opinion.text %></textarea>
-        </details>
+      <h2>Opinions</h2>
+      <div class="media-type-opinions-list">
+      <% mediaType.opinions.forEach(opinion => { %>
+        <div class="media-type-opinion">
+          <div class="opinion-header">
+            <div class="rating"><%= opinion.rating %></div>
+            <header><%= opinion.owner.name %></header>
+            
+          </div>
+          <div class="opinion-details">
+            <details>
+              <summary><i class="fa-solid fa-circle-info" style="color: #d6d6d7;"></i></summary>
+              <textarea rows="4" cols="50" readonly><%= opinion.text %></textarea>
+            </details>
+        </div>
       </div>
-    <% }) %>
-  </div>
-  <div class="no-opinions-add-opinion">
-    <% }else{ %>
-    <h2>No Opinions on <%= mediaType.title %></h2> 
-    <% } %>
-    <div class="add-opinion">
-      <form id="add-opinion-to-mediaType" action="/mediaTypes/<%= mediaType._id %>/opinions" method="POST">
-        <label>
-          Rating from 0 to 100:
-          <input type="Number"  name="rating" min="0" max="100" required>
-        </label>
-        <label>
-          Your Opinion:
-          <textarea type="String"  name="text" rows="4" cols="50" required></textarea>
-        </label>
-        <button type="submit">Add Your Opinion on <%= mediaType.title %></button>
-      </form>
+        <% }) %>
+      <% }else{ %>
+      </div>
+      <div id="h2">No Opinions</div>
+      <% } %>
     </div>
+    <div class="no-opinions-add-opinion">
+    <details>
+      <summary>
+        <div>Add an Opinion</div>
+        <i class="fa-solid fa-circle-info" style="color: #d6d6d7;"></i>
+      </summary>
+      <div class="add-opinion">
+        <form id="add-opinion-to-mediaType" action="/mediaTypes/<%= mediaType._id %>/opinions" method="POST">
+          <label>
+            Rating from 0 to 100:
+            <input type="Number"  name="rating" min="0" max="100" required>
+          </label>
+          <label>
+            Your Opinion:
+            <textarea type="String"  name="text" rows="4" cols="50" required></textarea>
+          </label>
+          <button type="submit">Add Your Opinion</button>
+        </form>
+      </div>
+    </details>
   </div>        
 </main>               
 <%- include('../partials/footer') %>
