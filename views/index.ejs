@@ -79,7 +79,9 @@
         <% }) %>
       </div>
     <% }else{ %>
-    <h2> <% user? "No Opinions" : "" %></h2> 
+      <% if(user) { %>
+    <h2>No Opinions</h2> 
+      <% } %>
     <% } %>
   </div>
 </main>
