@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../stylesheets/reset.css" />
     <link rel="stylesheet" href="../stylesheets/style.css" />
     <link rel="stylesheet" href="../stylesheets/mediaTypes/index.css" />
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="/images/comment-dots-solid.ico">
     <script src="https://kit.fontawesome.com/96f9470ce4.js" crossorigin="anonymous"></script>
     <title><%= title %></title>
 <%- include('../partials/nav') %>
@@ -21,7 +22,7 @@
         </div>
       <% }) %>
     <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
-      <button class="btn">Add a new <%= title %> </button>
+      <button class="button-12" role="button">Add a new <%= title %> </button>
     </a>
     <% }else if(title === "Movie") { %>
       <% mediaTypes.forEach((mediaType) => { %>
@@ -32,7 +33,7 @@
         </div>
       <% }) %>
     <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
-      <button class="btn">Add a new <%= title %> </button>
+      <button class="button-12" role="button">Add a new <%= title %> </button>
     </a>
     <% }else if(title === "Game") { %>
       <% mediaTypes.forEach((mediaType) => { %>
@@ -43,7 +44,7 @@
         </div>
       <% }) %>
     <a class="add-mediatype" href="/mediaTypes/new?type=<%= title %>">
-      <button class="btn">Add a new <%= title %> </button>
+      <button class="button-12" role="button">Add a new <%= title %> </button>
     </a>
     <% } %>
   </div>

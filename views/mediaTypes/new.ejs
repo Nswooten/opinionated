@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../stylesheets/reset.css" />
     <link rel="stylesheet" href="../stylesheets/style.css" />
     <link rel="stylesheet" href="../stylesheets/mediaTypes/new.css" />
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="/images/comment-dots-solid.ico">
     <script src="https://kit.fontawesome.com/96f9470ce4.js" crossorigin="anonymous"></script>
     <title><%= title %></title>
 <%- include('../partials/nav') %>
@@ -13,68 +14,44 @@
   <h1>Add a <%= title %></h1>
   <div class="add-media">
     <% if(title === "Book") {%>
-      <form action="/mediaTypes" id="add-media" method="POST">
-        <input type="hidden" name="type" value="Book">
-        <label>
-          Title:
-          <input type="String"  name="title" required>
-        </label>
-        <label>
-          Author:
-          <input type="String"  name="creator" required>
-        </label>
-        <label>
-          Genre:
-          <input type="String"  name="genre" required>
-        </label>
-        <label>
-          Year Published:
-          <input type="String"  name="releaseYear" pattern="\d{4}" required>
-        </label>
-      </form>
-      <button type="submit" form="add-media">Add <%= title %></button>
+      <div class="form-style-5">
+        <form  action="/mediaTypes" id="add-media" method="POST">
+            <fieldset>
+            <input type="hidden" name="type" value="Book">
+              <input type="String"  name="title" placeholder="Title" required>
+              <input type="String"  name="creator" placeholder="Author" required>
+              <input type="String"  name="genre" placeholder="Genre" required>
+              <input type="String"  name="releaseYear" placeholder="Year Released" pattern="\d{4}" required>
+          </fieldset>
+          </form>
+          <button class="button-12" role="button" type="submit" form="add-media">Add <%= title %></button>
+      </div>
   <% }else if(title === "Movie") { %>
-    <form action="/mediaTypes" id="add-media" method="POST">
-      <input type="hidden" name="type" value="Movie">
-      <label>
-        Title:
-        <input type="String"  name="title" required>
-      </label>
-      <label>
-        Director:
-        <input type="String"  name="creator" required>
-      </label>
-      <label>
-        Genre:
-        <input type="String"  name="genre" required>
-      </label>
-      <label>
-        Year Released:
-        <input type="String"  name="releaseYear" pattern="\d{4}" required>
-      </label>
-    </form>
-    <button type="submit" form="add-media">Add <%= title %></button>
+    <div class="form-style-5">
+      <form  action="/mediaTypes" id="add-media" method="POST">
+          <fieldset>
+          <input type="hidden" name="type" value="Movie">
+            <input type="String"  name="title" placeholder="Title" required>
+            <input type="String"  name="creator" placeholder="Director" required>
+            <input type="String"  name="genre" placeholder="Genre" required>
+            <input type="String"  name="releaseYear" placeholder="Year Released" pattern="\d{4}" required>
+        </fieldset>
+        </form>
+        <button class="button-12" role="button" type="submit" form="add-media">Add <%= title %></button>
+    </div>
   <% }else if(title === "Game") { %>
-    <form action="/mediaTypes" id="add-media" method="POST">
-      <input type="hidden" name="type" value="Game">
-      <label>
-        Title:
-        <input type="String"  name="title" required>
-      </label>
-      <label>
-        Creator:
-        <input type="String"  name="creator" required>
-      </label>
-      <label>
-        Genre:
-        <input type="String"  name="genre" required>
-      </label>
-      <label>
-        Year Released:
-        <input type="String"  name="releaseYear" pattern="\d{4}" required>
-      </label>
-    </form>
-    <button type="submit" form="add-media">Add <%= title %></button>
+    <div class="form-style-5">
+      <form  action="/mediaTypes" id="add-media" method="POST">
+          <fieldset>
+          <input type="hidden" name="type" value="Game">
+            <input type="String"  name="title" placeholder="Title" required>
+            <input type="String"  name="creator" placeholder="Studio" required>
+            <input type="String"  name="genre" placeholder="Genre" required>
+            <input type="String"  name="releaseYear" placeholder="Year Released" pattern="\d{4}" required>
+        </fieldset>
+        </form>
+        <button class="button-12" role="button" type="submit" form="add-media">Add <%= title %></button>
+    </div>
   <% } %>
   </div>
 </main>
