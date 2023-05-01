@@ -7,7 +7,7 @@
     <div class="profile"> 
       <h1 id="landing-page">Opinionated</h1>
 <% }else{ %>
-  <%- include('./partials/nav') %>
+<%- include('./partials/nav') %>
 <% } %>
 <main class="main-profile">
   <div class="profile">
@@ -34,11 +34,12 @@
     <% } %>
     <% if (user?.profile.avatar) { %>
         <img
+          id="avatar"
           src="<%= user.profile.avatar %>"
           alt="<%= user.profile.name %> avatar"
         />
-        <a href="/auth/logout" class="right">
-          <button type="submit">Logout</button>
+        <a href="/auth/logout"  class="right">
+          <button id="logout" type="submit">Logout</button>
         </a>
       <% } %>
   </div>

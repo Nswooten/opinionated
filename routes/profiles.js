@@ -9,7 +9,9 @@ router.get('/', function (req, res) {
 })
 
 router.put('/:mediaTypeId/opinions/:opinionId', isLoggedIn, profilesCtrl.updateOpinion)
+
 router.delete('/:mediaTypeId/opinions/:opinionId', isLoggedIn, profilesCtrl.deleteOpinion)
+
 export {
   router
 }

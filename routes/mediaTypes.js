@@ -10,8 +10,6 @@ router.get('/:mediaTypeId', isLoggedIn, mediaTypesCtrl.show)
 
 router.post('/:mediaTypeId/opinions', isLoggedIn, mediaTypesCtrl.addOpinion)
 
-
-
 router.post("/", isLoggedIn, mediaTypesCtrl.create)
 
 export {
